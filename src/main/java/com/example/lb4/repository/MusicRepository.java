@@ -13,5 +13,5 @@ import org.springframework.stereotype.Repository;
 */
 
 @Repository
-public interface MusicRepo extends MongoRepository<Music, String> {
+public interface MusicRepository extends MongoRepository<Music, String> {
 }

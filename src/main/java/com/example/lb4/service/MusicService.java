@@ -9,7 +9,7 @@ package com.example.lb4.service;
 */
 
 import com.example.lb4.model.Music;
-import com.example.lb4.repository.MusicRepo;
+import com.example.lb4.repository.MusicRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MusicService {
-    private final MusicRepo musicRepo;
+    private final MusicRepository musicRepository;
     private static List<Music> musiclist = new ArrayList<Music>();
 
     {
@@ -32,22 +32,22 @@ public class MusicService {
 
     @PostConstruct
     void init() {
-        musicRepo.deleteAll();
-        musicRepo.saveAll(musiclist);
+        musicRepository.deleteAll();
+        musicRepository.saveAll(musiclist);
     }
     public List<Music> getMusicList() {
-        return musicRepo.findAll();
+        return musicRepository.findAll();
     }
     public Music getById(String id) {
-        return musicRepo.findById(id).orElse(null);
+        return musicRepository.findById(id).orElse(null);
     }
     public Music add(Music music) {
-        return musicRepo.save(music);
+        return musicRepository.save(music);
     }
     public Music update(Music music) {
-        return musicRepo.save(music);
+        return musicRepository.save(music);
     }
     public void delete(String id) {
-        musicRepo.deleteById(id);
+        musicRepository.deleteById(id);
     }
 }
