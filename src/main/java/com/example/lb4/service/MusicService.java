@@ -32,9 +32,9 @@ public class MusicService {
 
     @PostConstruct
     void init() {
+        musicRepo.deleteAll();
         musicRepo.saveAll(musiclist);
     }
-
     public List<Music> getMusicList() {
         return musicRepo.findAll();
     }
