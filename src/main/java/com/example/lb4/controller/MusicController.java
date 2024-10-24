@@ -11,24 +11,38 @@ package com.example.lb4.controller;
 import com.example.lb4.model.Music;
 import com.example.lb4.service.MusicService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/music")
+@RequestMapping("api/v1/music/")
 @RequiredArgsConstructor
 public class MusicController {
     private final MusicService musicService;
 
-    @RequestMapping("/hello")
-    public String hello() {
-        return "<h1> !!!!!!! hello !!!!!!! <h1>";
+    @GetMapping
+    public List<Music> getMusic() {
+        return musicService.getMusicList();
     }
 
-    @RequestMapping("/")
-    public List<Music> showAll() {
-        return musicService.getMusicList();
+    @GetMapping("{id}")
+    public Music getMusicById(@PathVariable String id) {
+        return musicService.getById(id);
+    }
+
+    @PostMapping
+    public Music createMusic(@RequestBody Music music) {
+        return musicService.add(music);
+    }
+
+    @PutMapping
+    public Music updateMusic(@RequestBody Music music) {
+        return musicService.update(music);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteMusic(@PathVariable String id) {
+        musicService.delete(id);
     }
 }

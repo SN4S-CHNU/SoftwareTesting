@@ -38,4 +38,16 @@ public class MusicService {
     public List<Music> getMusicList() {
         return musicRepo.findAll();
     }
+    public Music getById(String id) {
+        return musicRepo.findById(id).orElse(null);
+    }
+    public Music add(Music music) {
+        return musicRepo.save(music);
+    }
+    public Music update(Music music) {
+        return musicRepo.save(music);
+    }
+    public void delete(String id) {
+        musicRepo.deleteById(id);
+    }
 }
