@@ -1,0 +1,63 @@
+### GET all
+GET http://localhost:8080/api/v1/music/
+
+### GET first one
+GET http://localhost:8080/api/v1/music/1
+
+### DELETE third one
+DELETE http://localhost:8080/api/v1/music/3
+
+### CREATE one
+POST http://localhost:8080/api/v1/music/
+Content-Type: application/json
+
+{
+  "name": "VODA",
+  "artist": "Golubenko",
+  "album": "No"
+}
+
+### UPDATE one
+PUT http://localhost:8080/api/v1/music/
+Content-Type: application/json
+
+{
+  "id": "1",
+  "name": "Не треба",
+  "artist": "Скрябін",
+  "album": "Хробак"
+}
+
+### GET second one
+GET http://localhost:8080/api/v1/music/2
+
+
+### DELETE second one
+DELETE http://localhost:8080/api/v1/music/2
+
+
+### CREATE another one
+POST http://localhost:8080/api/v1/music/
+Content-Type: application/json
+
+{
+  "name": "TEST",
+  "artist": "test artist",
+  "album": "test album"
+}
+
+
+### UPDATE third music
+PUT http://localhost:8080/api/v1/music/
+Content-Type: application/json
+
+{
+  "id": "3",
+  "name": "test3",
+  "artist": "3",
+  "album": "3"
+}
+
+
+### GET non-existent
+GET http://localhost:8080/api/v1/music/999
