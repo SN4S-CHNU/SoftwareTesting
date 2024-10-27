@@ -2,7 +2,11 @@ package com.example.lb4.repository;
 
 import com.example.lb4.model.Music;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /*
     @author sn4s
@@ -14,4 +18,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MusicRepository extends MongoRepository<Music, String> {
+    @Query("{ 'id': ?0 }")
+    Optional<Music> findByCode(String code);
 }
